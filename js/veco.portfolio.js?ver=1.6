@@ -1,0 +1,40 @@
+
+jQuery( document ).ready( function( $ ) {
+
+	var portfolio = $(".portfolio"),
+		li = portfolio.find(".portfolio-list > li")
+	
+	portfolio
+	.find(".cats [data-slug]")
+	.on( "click", function( e ) {
+		
+		trigger = $( this )
+									
+		if ( trigger.hasClass("active") ) {
+						
+			li
+			.filter(".hidden")
+			.removeClass("hidden")
+												
+			trigger.removeClass("active")
+						
+		}
+		else {
+					
+			li
+			.addClass("hidden")
+			.filter("[data-cat*='" +  trigger.data("slug") + "']")
+			.removeClass("hidden")
+				
+			trigger
+			.addClass("active")
+			.siblings(".active")
+			.removeClass("active")
+		
+		}
+		
+		e.preventDefault()
+		
+	} )
+
+} );
